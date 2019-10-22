@@ -3,6 +3,7 @@
   <groupId>com.harshsanjay</groupId>
   <artifactId>ReservationApi</artifactId>
   <version>0.0.1-SNAPSHOT</version>
+  <packaging>war</packaging>
   
   <properties>
   	<failOnMissingWebXml>false</failOnMissingWebXml>
@@ -69,11 +70,11 @@
 </dependencies>
 
 <build>
+<pluginManagement>
 	 <plugins>
 	      <plugin>
-		        <groupId>org.apache.maven.plugins</groupId>
 		        <artifactId>maven-compiler-plugin</artifactId>
-		        <version>3.8.1</version>
+		        <version>3.5.1</version>
 		        <configuration>
 		          <source>1.8</source>
 		          <target>1.8</target>
@@ -81,13 +82,14 @@
 	      </plugin>
 	      
 	      <plugin>
-	          <groupId>org.apache.tomcat.maven</groupId>
-	          <artifactId>tomcat7-maven-plugin</artifactId>
-	          <version>2.2</version>
-	          <configuration>
-	          	<path>/</path>
-	          </configuration>
-        </plugin>
+				<groupId>org.apache.tomcat.maven</groupId>
+				<artifactId>tomcat7-maven-plugin</artifactId>
+				<version>2.2</version>
+				<configuration>
+					<path>/</path>
+				</configuration>
+		  </plugin>
     </plugins>
+</pluginManagement>
 </build>
 </project>
