@@ -2,6 +2,7 @@ package com.harshsanjay.spring.dao;
 
 import java.util.List;
 
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -16,9 +17,9 @@ public class ContactDAOImpl implements ContactDAO{
 	
 	
 	@Override
-	public void saveContact(Contact contact) {
-		// TODO Auto-generated method stub
-		
+	public long saveContact(Contact contact) {
+		sessionFactory.getCurrentSession().save(contact);
+		return contact.getContactId();
 	}
 
 	@Override
@@ -29,19 +30,29 @@ public class ContactDAOImpl implements ContactDAO{
 
 	@Override
 	public Contact getContact(long id) {
-		// TODO Auto-generated method stub
-		return null;
+		return sessionFactory.getCurrentSession().get(Contact.class, id);
 	}
 
 	@Override
 	public void updateContact(long id, Contact contact) {
-		// TODO Auto-generated method stub
+		
+		Session session = sessionFactory.getCurrentSession();
+		Contact oldContact = session.byId(Contact.class).load(id);
+		oldContact.setContactName(contact.getContactName());
+		oldContact.setContactType(contact.getContactType());
+		oldContact.setPhoneNumber(contact.getPhoneNumber());
+		oldContact.setBirthDate(contact.getBirthDate());
+		
+		session.flush();
 		
 	}
 
 	@Override
 	public void deleteContact(long id) {
-		// TODO Auto-generated method stub
+		
+		Session session = sessionFactory.getCurrentSession();
+		Contact contact = session.byId(Contact.class).load(id);
+		session.delete(contact);
 		
 	}
 

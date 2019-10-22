@@ -8,7 +8,7 @@ public interface ContactDAO {
 
 	
 	//method to insert a contact
-	void saveContact(Contact contact);
+	long saveContact(Contact contact);
 	
 	//method to get all contacts
 	List<Contact> listContacts();

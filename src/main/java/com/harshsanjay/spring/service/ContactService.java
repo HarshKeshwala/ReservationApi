@@ -7,7 +7,7 @@ import com.harshsanjay.spring.model.Contact;
 public interface ContactService {
 	
 		//method to insert a contact
-		void saveContact(Contact contact);
+		long saveContact(Contact contact);
 		
 		//method to get all contacts
 		List<Contact> listContacts();

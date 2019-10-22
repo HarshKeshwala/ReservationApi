@@ -18,9 +18,9 @@ public class ContactServiceImpl implements ContactService{
 	
 	
 	@Override
-	public void saveContact(Contact contact) {
-		// TODO Auto-generated method stub
-		
+	@Transactional
+	public long saveContact(Contact contact) {
+		return contactDAO.saveContact(contact);
 	}
 
 	@Override
@@ -30,21 +30,21 @@ public class ContactServiceImpl implements ContactService{
 	}
 
 	@Override
+	@Transactional
 	public Contact getContact(long id) {
-		// TODO Auto-generated method stub
-		return null;
+		return contactDAO.getContact(id);
 	}
 
 	@Override
+	@Transactional
 	public void updateContact(long id, Contact contact) {
-		// TODO Auto-generated method stub
-		
+		contactDAO.updateContact(id, contact);
 	}
 
 	@Override
+	@Transactional
 	public void deleteContact(long id) {
-		// TODO Auto-generated method stub
-		
+		contactDAO.deleteContact(id);
 	}
 
 }
