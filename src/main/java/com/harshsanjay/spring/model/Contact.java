@@ -9,10 +9,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.persistence.UniqueConstraint;
 
 @Entity(name = "Contact")
-@Table(uniqueConstraints={@UniqueConstraint(columnNames={"contactName"})})
 public class Contact {
 
 	@Id
@@ -26,7 +27,7 @@ public class Contact {
 	private String contactType;
 	
 	@Column(name = "phoneNumber")
-	private Long phoneNumber;
+	private String phoneNumber;
 	
 	@Column(nullable = false)
 	private Date birthDate;
@@ -55,11 +56,11 @@ public class Contact {
 		this.contactType = contactType;
 	}
 
-	public Long getPhoneNumber() {
+	public String getPhoneNumber() {
 		return phoneNumber;
 	}
 
-	public void setPhoneNumber(Long phoneNumber) {
+	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
 
