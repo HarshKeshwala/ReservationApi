@@ -39,8 +39,8 @@ public class ContactController {
 	}
 	
 	//save the contact
-	//@CrossOrigin(origins="http://localhost:4200") 
-	@PostMapping(path = "/contact", consumes = MediaType.APPLICATION_JSON_VALUE)
+	//@CrossOrigin(origins="http://localhost:4200")
+	@PostMapping(path = "/contact", consumes = "application/json")
 	@ResponseBody
 	public ResponseEntity<?> saveContact(@RequestBody Contact contact) {
 		

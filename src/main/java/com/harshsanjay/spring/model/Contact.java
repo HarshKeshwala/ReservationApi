@@ -13,6 +13,9 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.UniqueConstraint;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+
 @Entity(name = "Contact")
 public class Contact {
 
@@ -30,6 +33,7 @@ public class Contact {
 	private String phoneNumber;
 	
 	@Column(nullable = false)
+	@JsonFormat(pattern = "yyyy-MM-dd")
 	private Date birthDate;
 
 	public long getContactId() {
@@ -68,6 +72,7 @@ public class Contact {
 		return birthDate;
 	}
 
+	@JsonDeserialize
 	public void setBirthDate(Date birthDate) {
 		this.birthDate = birthDate;
 	}
