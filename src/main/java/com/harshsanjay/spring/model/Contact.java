@@ -8,14 +8,18 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-import javax.persistence.UniqueConstraint;
+import javax.persistence.NamedNativeQueries;
+import javax.persistence.NamedNativeQuery;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
+@NamedNativeQueries({ 
+	  @NamedNativeQuery(
+	    name = "GetContactDetails", 
+	    query = "CALL GetContactDetails(:contactName)", 
+	    resultClass = Contact.class) 
+})
 @Entity(name = "Contact")
 public class Contact {
 

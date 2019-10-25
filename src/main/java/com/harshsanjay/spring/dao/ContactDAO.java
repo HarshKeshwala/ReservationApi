@@ -22,4 +22,7 @@ public interface ContactDAO {
 	//method to delete contact
 	void deleteContact(long id);
 	
+	//method to call stored procedure
+	Contact getContactDetail(String name);
+	
 }

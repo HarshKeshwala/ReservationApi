@@ -2,6 +2,9 @@ package com.harshsanjay.spring.dao;
 
 import java.util.List;
 
+import javax.persistence.NoResultException;
+import javax.persistence.Query;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -54,6 +57,23 @@ public class ContactDAOImpl implements ContactDAO{
 		Contact contact = session.byId(Contact.class).load(id);
 		session.delete(contact);
 		
+	}
+
+	@Override
+	public Contact getContactDetail(String name) {
+		Query query = sessionFactory.getCurrentSession().getNamedQuery("GetContactDetails").setParameter("contactName", name);
+		Contact contact = null;
+		try {
+			contact = (Contact) query.getSingleResult();
+		}
+		catch(NoResultException e) {
+		}
+		if(contact != null) {
+			return contact;
+		}
+		else {
+		return null;
+		}
 	}
 
 }

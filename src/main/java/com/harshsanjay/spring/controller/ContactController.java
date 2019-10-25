@@ -74,4 +74,11 @@ public class ContactController {
 		contactService.deleteContact(id);
 		return ResponseEntity.ok().body("Contact has been deleted successfully!");
 	}
+	
+	@GetMapping("/contact/detail/{name}")
+	public ResponseEntity<?> getContactDetail(@PathVariable("name") String name) {
+		Contact contact = contactService.getContactDetail(name);
+		return ResponseEntity.ok().body(contact);
+		
+	}
 }

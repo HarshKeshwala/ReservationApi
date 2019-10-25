@@ -47,4 +47,10 @@ public class ContactServiceImpl implements ContactService{
 		contactDAO.deleteContact(id);
 	}
 
+	@Override
+	@Transactional
+	public Contact getContactDetail(String name) {
+		return contactDAO.getContactDetail(name);
+	}
+
 }
